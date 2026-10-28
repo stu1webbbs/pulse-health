@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>PulseHealth</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-primary-container': '#f4fffc', 'on-tertiary': '#ffffff', 'surface-container-low': '#f2f4f6', 'secondary-container': '#dae2fd', 'primary': '#00685f', 'on-surface': '#191c1e', 'on-background': '#191c1e', 'inverse-primary': '#6bd8cb', 'on-secondary-fixed-variant': '#3f465c', 'on-error': '#ffffff', 'tertiary-container': '#00855b', 'surface-container': '#eceef0', 'primary-container': '#008378', 'on-tertiary-fixed-variant': '#005236', 'tertiary': '#006947', 'error-container': '#ffdad6', 'surface-container-high': '#e6e8ea', 'on-surface-variant': '#3d4947', 'surface-tint': '#006a61', 'surface-container-highest': '#e0e3e5', 'on-tertiary-fixed': '#002113', 'on-secondary': '#ffffff', 'on-primary-fixed-variant': '#005049', 'primary-fixed-dim': '#6bd8cb', 'outline-variant': '#bcc9c6', 'surface-variant': '#e0e3e5', 'surface': '#f7f9fb', 'secondary': '#565e74', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed': '#00201d', 'inverse-on-surface': '#eff1f3', 'on-primary': '#ffffff', 'on-tertiary-container': '#f5fff6', 'on-error-container': '#93000a', 'on-secondary-fixed': '#131b2e', 'primary-fixed': '#89f5e7', 'background': '#f7f9fb', 'outline': '#6d7a77', 'secondary-fixed-dim': '#bec6e0', 'error': '#ba1a1a', 'secondary-fixed': '#dae2fd', 'inverse-surface': '#2d3133', 'surface-container-lowest': '#ffffff', 'on-secondary-container': '#5c647a', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f7f9fb', 'surface-dim': '#d8dadc' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'margin': '1rem', 'gutter': '1rem', 'space-lg': '1.5rem', 'margin-desktop': '3rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'margin-tablet': '2rem', 'gutter-desktop': '2rem', 'space-xl': '2.25rem', 'space-sm': '0.5rem', 'gutter-tablet': '1.5rem' }, 'fontFamily': { 'headline-lg': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'label-md': ['Inter'], 'headline-lg-mobile': ['Plus Jakarta Sans'], 'metric-xl': ['Plus Jakarta Sans'], 'label-sm': ['Inter'], 'headline-sm': ['Plus Jakarta Sans'], 'metric-md': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'body-lg': ['Inter'], 'body-sm': ['Inter'], 'body-md': ['Inter'] }, 'fontSize': { 'headline-lg': ['2rem', { lineHeight: '2.5rem', letterSpacing: '-0.015em', fontWeight: '600' }], 'display-lg-mobile': ['2.5rem', { lineHeight: '3rem', letterSpacing: '-0.02em', fontWeight: '700' }], 'label-md': ['0.875rem', { lineHeight: '1.25rem', fontWeight: '500' }], 'headline-lg-mobile': ['1.625rem', { lineHeight: '2.125rem', letterSpacing: '-0.01em', fontWeight: '600' }], 'metric-xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.03em', fontWeight: '700' }], 'label-sm': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.02em', fontWeight: '600' }], 'headline-sm': ['1.125rem', { lineHeight: '1.625rem', fontWeight: '600' }], 'metric-md': ['1.5rem', { lineHeight: '1.75rem', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-md': ['1.375rem', { lineHeight: '1.875rem', fontWeight: '600' }], 'display-lg': ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.025em', fontWeight: '700' }], 'body-lg': ['1.125rem', { lineHeight: '1.75rem', fontWeight: '400' }], 'body-sm': ['0.8125rem', { lineHeight: '1.25rem', fontWeight: '400' }], 'body-md': ['0.9375rem', { lineHeight: '1.5rem', fontWeight: '400' }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(15,23,42,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="PulseHealth Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VY7K-EajeIw1gbyKD3HnsH2MBgbPL06_SphcAHXa8ZKBMewR4RUe1kkJP3NpFIoXWgVnKTph3qrwdsffA08ilE_iPbVfnO46kwgqx4lFbVtV2kkAmK0fJmw7E25thTZyg6-WK7f7xbvubh67ogf6EhsAt6X7wRuponaJn9W2VD_7aJ8KRO-Bw7xhq2OZ6GC8Hpa2yQTyE0Wdmj_Ig6qa4d9YY2prQ02S8CXqjNnAUvF282YDQKrTkuq8pS"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate">PulseHealth</span><div class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-[10px] tracking-wide uppercase" title="HIPAA Encrypted Protocol Active"><span class="material-symbols-outlined text-[12px] leading-none text-tertiary">lock</span><span class="hidden xs:inline font-semibold">256-BIT</span></div></div><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Ai Advisor</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="relative flex items-center justify-center pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgJFmqoQhhbAEbv4ETS83Z8iEiz3CTVbAQpB-Cq96Nu2ctvZXCeTiXurX_R8g0_fBQon7TObuRdc9aAhu7BnewqPhqQy4GHNNFKCMclllxEHhxFinzS2xqwaScTjAkfXq6IhlaBhpEc16xd1XdW1VP2JBq4jdUpMybI0P-pOuuPZxAZZZu9xTtFuYy6KPslRGeoSObmeDZ0F24eFSzZoXdzt_w6S64h1g6_Wqg9nmjvSFMNg587Q2ylA"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- AI Advisor Hero & Status Banner -->
+<div class="px-margin pt-4 pb-2">
+<div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm flex items-start gap-space-sm relative overflow-hidden">
+<!-- Glow ambient accent -->
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">psychology</span>
+</div>
+<div class="flex flex-col min-w-0 pr-2">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Pulse AI Clinical Assistant</h2>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-[10px] uppercase font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-snug">
+          Available 24/7 • Trained on peer-reviewed clinical guidelines • Not emergency care
+        </p>
+</div>
+</div>
+</div>
+<!-- Smart Context Chips (Horizontally Scrollable) -->
+<div class="w-full overflow-x-auto no-scrollbar py-2.5 px-margin">
+<div class="flex items-center gap-2 min-w-max">
+<button class="group flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container hover:bg-secondary-container transition-all text-on-surface text-left shadow-xs" onclick="appendPrompt(this.innerText)">
+<span class="material-symbols-outlined text-[16px] text-primary group-hover:scale-110 transition-transform">insights</span>
+<span class="font-label-sm text-label-sm">Analyze my resting heart rate trend</span>
+</button>
+<button class="group flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container hover:bg-secondary-container transition-all text-on-surface text-left shadow-xs" onclick="appendPrompt(this.innerText)">
+<span class="material-symbols-outlined text-[16px] text-primary group-hover:scale-110 transition-transform">restaurant</span>
+<span class="font-label-sm text-label-sm">Suggest low-sodium dinner ideas</span>
+</button>
+<button class="group flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container hover:bg-secondary-container transition-all text-on-surface text-left shadow-xs" onclick="appendPrompt(this.innerText)">
+<span class="material-symbols-outlined text-[16px] text-primary group-hover:scale-110 transition-transform">bedtime</span>
+<span class="font-label-sm text-label-sm">Why is my deep sleep low this week?</span>
+</button>
+</div>
+</div>
+<!-- Conversational Feed -->
+<div class="px-margin flex flex-col gap-space-md pt-2 pb-4" id="chat-stream">
+<!-- Assistant Initial Greeting Bubble -->
+<div class="flex items-start gap-2.5 max-w-[92%]">
+<div class="w-7 h-7 rounded-full bg-primary-container/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container-lowest p-space-md rounded-2xl rounded-tl-xs shadow-sm text-on-surface font-body-md text-body-md leading-relaxed">
+          Hello Jordan. I've correlated your continuous biometric telemetry with this week's activity logs. How can I assist your health and recovery journey today?
+        </div>
+<span class="font-label-sm text-[11px] text-on-surface-variant pl-1">09:15 AM</span>
+</div>
+</div>
+<!-- User Question Bubble -->
+<div class="flex items-start justify-end gap-2.5 max-w-[90%] self-end">
+<div class="flex flex-col items-end gap-1">
+<div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-xs shadow-sm font-body-md text-body-md leading-relaxed">
+          My resting heart rate averaged 64 bpm this week, down from 71 last month. Is this a good sign?
+        </div>
+<span class="font-label-sm text-[11px] text-on-surface-variant pr-1">09:17 AM</span>
+</div>
+<img class="w-7 h-7 rounded-full object-cover flex-shrink-0 mt-1 shadow-xs" data-alt="Close up lifestyle portrait of a healthy user with warm natural window lighting, wearing comfortable teal sportswear, smiling calmly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKoBQzheynDho2wFVy5Lmz-2HQt2WSMmtoyDGFn1WreUKLyX2cw_30s0qgQV-kd7stt_itlYDFcjHl_FMFZfvLcslfRL-ZZmY9ksnMwS_OCfRng2p4tHtv31oWnGbs3woz_hszjRjWp1HOS2zztDIhGp13FQ20Th4oioc-sHady-rCsvRyYO_LVLkXCu-b5x-cNYGJA2MSD2C4xHnmBpNweTFiZpfp6ZHSH5MJvfGhUjLG0_qSDLEQMw"/>
+</div>
+<!-- AI Clinical Assistant Response with Interactive Metric Card -->
+<div class="flex items-start gap-2.5 max-w-[95%]">
+<div class="w-7 h-7 rounded-full bg-primary-container/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2 w-full">
+<div class="bg-surface-container-lowest p-space-md rounded-2xl rounded-tl-xs shadow-sm text-on-surface flex flex-col gap-3">
+<p class="font-body-md text-body-md leading-relaxed">
+            That is a positive indicator! A lowering resting heart rate generally reflects improved cardiovascular efficiency and cardiovascular endurance, especially paired with your consistent 8,500 daily steps. Your HRV has also remained stable at 58ms.
+          </p>
+<!-- Embedded Metric Telemetry Card -->
+<div class="rounded-xl bg-surface-container-low p-3.5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+</div>
+<div>
+<div class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant">Resting Heart Rate</div>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-md text-metric-md text-on-surface">64</span>
+<span class="font-label-sm text-on-surface-variant">BPM</span>
+<span class="ml-2 font-label-sm text-[11px] text-tertiary font-semibold flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> -7 bpm
+                    </span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-[11px] font-semibold">Optimal</span>
+</div>
+<!-- Mini Sparkline inline SVG -->
+<div class="w-full h-12 relative flex items-end">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 280 48">
+<defs>
+<lineargradient id="rhrGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00685f" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#00685f" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 0,16 Q 40,12 70,22 T 140,24 T 210,36 T 280,44 L 280,48 L 0,48 Z" fill="url(#rhrGrad)"></path>
+<path d="M 0,16 Q 40,12 70,22 T 140,24 T 210,36 T 280,44" fill="none" stroke="#00685f" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="280" cy="44" fill="#00685f" r="3.5"></circle>
+</svg>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 py-2 px-3 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md text-center transition-colors shadow-xs">
+                Review Full 30-Day Trend
+              </button>
+<button class="py-2 px-3.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors shadow-xs">
+                Set Target
+              </button>
+</div>
+</div>
+<!-- Medical guideline reassurance badge -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-tertiary">verified_user</span>
+<span>Corroborated with AHA &amp; ESC Clinical Fitness Indices</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant pl-1">09:18 AM</span>
+</div>
+</div>
+</div>
+<!-- Evidence-Based Micro-Education -->
+<div class="px-margin pt-4 pb-2 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">local_library</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Clinical Micro-Education</h3>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline">View Library</button>
+</div>
+<div class="grid grid-cols-1 gap-space-sm">
+<!-- Article Card 1 -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-3.5">
+<img class="w-16 h-16 rounded-xl object-cover flex-shrink-0 shadow-xs" data-alt="A tranquil modern bedroom aesthetic showing soft dawn ambient light, calm indigo and teal tones, emphasizing deep restorative sleep and biological circadian recovery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKVHJwvikpzKQm_1TtPOJZDwr6wnivlEJumkTYJJSEoMlxaabu9TXPrSr7qbJWCDLTpMfK5ZbrZpcxAq46sJ1Q1oOsbzP2NtGwm1dprYTZka1jQSx80eHxQBXuwwJBQHdHde8S5gWak8TPDcb9aATCzWgugyWuQ415qXTaOjg4SbajLmTrRQD2g9ROiqnMrwXYkceLHGn0DL9WDhR_N3QjWDsoHpXAORkuR4RDP80hrZ7bL-xG6lpcfg"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5 text-tertiary font-label-sm text-[10px] uppercase font-semibold">
+<span>Mayo Clinic / NIH Ref</span>
+<span>•</span>
+<span>3 min read</span>
+</div>
+<h4 class="font-headline-sm text-[14px] leading-snug text-on-surface font-semibold truncate mt-0.5">
+            Understanding Circadian Rhythm &amp; Sleep Latency
+          </h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">
+            How sleep windows influence autonomic recovery and parasympathetic heart rates.
+          </p>
+</div>
+<button aria-label="Read Article" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Article Card 2 -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-3.5">
+<img class="w-16 h-16 rounded-xl object-cover flex-shrink-0 shadow-xs" data-alt="Clean minimalist glass carafe of pure mineral hydration water with sliced citrus and mint leaves, illuminated by gentle clinical daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD44poFvi6F8nZbMd7isxrZglWY45KGiLiBJKyNjoGyM8azon0spxW7-9xFULu7pq5G5EMbeDBmngudsobrmFzBf0yJYxzqwZhU3qkLTHtahOZu8YKn8ro81Vmi4BnbWMF6qWmB-py0tU-Bk5-IPnb1VWDq9eIwVFB27_YUCqRph8eoX4Fhsx7LgGn04yULShq3U7qzkR5_Xp21_RbZNjJx785pnVCWjl4EH02wErhHfx_KRf78RCSHQg"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5 text-primary font-label-sm text-[10px] uppercase font-semibold">
+<span>Biochemical Wellness</span>
+<span>•</span>
+<span>2 min read</span>
+</div>
+<h4 class="font-headline-sm text-[14px] leading-snug text-on-surface font-semibold truncate mt-0.5">
+            Electrolytes vs Pure Water in Hydration
+          </h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">
+            Sodium-potassium ratio impact on cellular plasma volume and cardiac strain.
+          </p>
+</div>
+<button aria-label="Read Article" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Input Action Bar (Sticky within slot bottom) -->
+<div class="sticky bottom-0 w-full px-margin pt-2 pb-3 bg-surface/90 backdrop-blur-md">
+<div class="flex items-center gap-2 p-1.5 rounded-full bg-surface-container-lowest shadow-md">
+<!-- Media Actions -->
+<button aria-label="Attach Photo or Vital Log" class="w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center flex-shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+</button>
+<!-- Text Input -->
+<input class="flex-1 min-w-0 bg-transparent text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none px-2" id="chat-input" onkeydown="if(event.key === 'Enter') handleSend()" placeholder="Ask anything about your health..." type="text"/>
+<!-- Audio / Mic Action -->
+<button aria-label="Voice input" class="w-9 h-9 rounded-full hover:bg-surface-container text-on-surface-variant flex items-center justify-center flex-shrink-0 transition-colors" id="mic-btn" onclick="toggleMic()">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+<!-- Send Action -->
+<button aria-label="Send message" class="w-10 h-10 rounded-full bg-primary hover:bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 transition-all shadow-xs" id="send-btn" onclick="handleSend()">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  function appendPrompt(text) {
+    const input = document.getElementById('chat-input');
+    if (!input) return;
+    input.value = text;
+    input.focus();
+  }
+
+  function handleSend() {
+    const input = document.getElementById('chat-input');
+    const stream = document.getElementById('chat-stream');
+    if (!input || !stream || !input.value.trim()) return;
+
+    const userText = input.value.trim();
+    input.value = '';
+
+    // Append User Message
+    const userWrap = document.createElement('div');
+    userWrap.className = 'flex items-start justify-end gap-2.5 max-w-[90%] self-end animate-fade-in';
+    userWrap.innerHTML = `
+      <div class="flex flex-col items-end gap-1">
+        <div class="bg-primary text-on-primary p-space-md rounded-2xl rounded-tr-xs shadow-sm font-body-md text-body-md leading-relaxed">
+          ${escapeHtml(userText)}
+        </div>
+        <span class="font-label-sm text-[11px] text-on-surface-variant pr-1">Just now</span>
+      </div>
+    `;
+    stream.appendChild(userWrap);
+
+    // AI thinking feedback & mock clinical response
+    setTimeout(() => {
+      const aiWrap = document.createElement('div');
+      aiWrap.className = 'flex items-start gap-2.5 max-w-[95%] animate-fade-in';
+      aiWrap.innerHTML = `
+        <div class="w-7 h-7 rounded-full bg-primary-container/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
+          <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+          <div class="bg-surface-container-lowest p-space-md rounded-2xl rounded-tl-xs shadow-sm text-on-surface font-body-md text-body-md leading-relaxed">
+            I am evaluating your recent telemetry records for "${escapeHtml(userText)}". Your historical patterns show favorable baseline homeostasis. Remember to log your evening hydration and maintain your sleep schedule.
+          </div>
+          <span class="font-label-sm text-[11px] text-on-surface-variant pl-1">Just now</span>
+        </div>
+      `;
+      stream.appendChild(aiWrap);
+      aiWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 650);
+  }
+
+  function toggleMic() {
+    const btn = document.getElementById('mic-btn');
+    if (!btn) return;
+    const isRecording = btn.classList.toggle('text-error');
+    if (isRecording) {
+      btn.classList.add('animate-pulse');
+      const input = document.getElementById('chat-input');
+      if (input) input.placeholder = 'Listening to your health query...';
+    } else {
+      btn.classList.remove('animate-pulse');
+      const input = document.getElementById('chat-input');
+      if (input) input.placeholder = 'Ask anything about your health...';
+    }
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(15,23,42,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-space-xs max-w-md mx-auto"><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">ecg_heart</span><span class="font-label-sm text-[11px] leading-tight">Dashboard</span></a><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="track-and-log" href="#"><span class="material-symbols-outlined text-[24px]">add_circle</span><span class="font-label-sm text-[11px] leading-tight">Track &amp; Log</span></a><a aria-current="page" class="flex-1 h-full flex flex-col items-center justify-center gap-1 transition-colors text-primary font-semibold" data-path="ai-advisor" href="#"><span class="material-symbols-outlined text-[24px]">psychology</span><span class="font-label-sm text-[11px] leading-tight">AI Advisor</span></a><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="profile-and-sync" href="#"><span class="material-symbols-outlined text-[24px]">devices_wearables</span><span class="font-label-sm text-[11px] leading-tight">Profile &amp; Sync</span></a></div></nav></body></html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><title>PulseHealth</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-primary-container': '#f4fffc', 'on-tertiary': '#ffffff', 'surface-container-low': '#f2f4f6', 'secondary-container': '#dae2fd', 'primary': '#00685f', 'on-surface': '#191c1e', 'on-background': '#191c1e', 'inverse-primary': '#6bd8cb', 'on-secondary-fixed-variant': '#3f465c', 'on-error': '#ffffff', 'tertiary-container': '#00855b', 'surface-container': '#eceef0', 'primary-container': '#008378', 'on-tertiary-fixed-variant': '#005236', 'tertiary': '#006947', 'error-container': '#ffdad6', 'surface-container-high': '#e6e8ea', 'on-surface-variant': '#3d4947', 'surface-tint': '#006a61', 'surface-container-highest': '#e0e3e5', 'on-tertiary-fixed': '#002113', 'on-secondary': '#ffffff', 'on-primary-fixed-variant': '#005049', 'primary-fixed-dim': '#6bd8cb', 'outline-variant': '#bcc9c6', 'surface-variant': '#e0e3e5', 'surface': '#f7f9fb', 'secondary': '#565e74', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed': '#00201d', 'inverse-on-surface': '#eff1f3', 'on-primary': '#ffffff', 'on-tertiary-container': '#f5fff6', 'on-error-container': '#93000a', 'on-secondary-fixed': '#131b2e', 'primary-fixed': '#89f5e7', 'background': '#f7f9fb', 'outline': '#6d7a77', 'secondary-fixed-dim': '#bec6e0', 'error': '#ba1a1a', 'secondary-fixed': '#dae2fd', 'inverse-surface': '#2d3133', 'surface-container-lowest': '#ffffff', 'on-secondary-container': '#5c647a', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f7f9fb', 'surface-dim': '#d8dadc' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'margin': '1rem', 'gutter': '1rem', 'space-lg': '1.5rem', 'margin-desktop': '3rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'margin-tablet': '2rem', 'gutter-desktop': '2rem', 'space-xl': '2.25rem', 'space-sm': '0.5rem', 'gutter-tablet': '1.5rem' }, 'fontFamily': { 'headline-lg': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'label-md': ['Inter'], 'headline-lg-mobile': ['Plus Jakarta Sans'], 'metric-xl': ['Plus Jakarta Sans'], 'label-sm': ['Inter'], 'headline-sm': ['Plus Jakarta Sans'], 'metric-md': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'body-lg': ['Inter'], 'body-sm': ['Inter'], 'body-md': ['Inter'] }, 'fontSize': { 'headline-lg': ['2rem', { lineHeight: '2.5rem', letterSpacing: '-0.015em', fontWeight: '600' }], 'display-lg-mobile': ['2.5rem', { lineHeight: '3rem', letterSpacing: '-0.02em', fontWeight: '700' }], 'label-md': ['0.875rem', { lineHeight: '1.25rem', fontWeight: '500' }], 'headline-lg-mobile': ['1.625rem', { lineHeight: '2.125rem', letterSpacing: '-0.01em', fontWeight: '600' }], 'metric-xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.03em', fontWeight: '700' }], 'label-sm': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.02em', fontWeight: '600' }], 'headline-sm': ['1.125rem', { lineHeight: '1.625rem', fontWeight: '600' }], 'metric-md': ['1.5rem', { lineHeight: '1.75rem', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-md': ['1.375rem', { lineHeight: '1.875rem', fontWeight: '600' }], 'display-lg': ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.025em', fontWeight: '700' }], 'body-lg': ['1.125rem', { lineHeight: '1.75rem', fontWeight: '400' }], 'body-sm': ['0.8125rem', { lineHeight: '1.25rem', fontWeight: '400' }], 'body-md': ['0.9375rem', { lineHeight: '1.5rem', fontWeight: '400' }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-fixed"><main class="flex flex-col relative w-full min-h-screen pt-safe pb-safe bg-surface"><div class="flex flex-col w-full px-margin pb-space-xl space-y-space-lg">
+<!-- Header & Progress Tracker -->
+<div class="flex flex-col space-y-space-sm pt-space-xs">
+<div class="flex items-center justify-between text-secondary">
+<div class="flex items-center space-x-space-xs">
+<span class="material-symbols-outlined text-primary text-base">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">PulseHealth Shield</span>
+</div>
+<span class="font-label-sm text-label-sm font-medium text-secondary">Step 2 of 4</span>
+</div>
+<!-- Segmented Stepper Bar -->
+<div class="w-full grid grid-cols-4 gap-2 pt-1">
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="h-1.5 rounded-full bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-fixed animate-pulse opacity-60"></div>
+</div>
+<div class="h-1.5 rounded-full bg-surface-container-high"></div>
+<div class="h-1.5 rounded-full bg-surface-container-high"></div>
+</div>
+<!-- Title Block -->
+<div class="pt-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold tracking-tight">
+        Personalize Your Care Plan
+      </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary">lock</span>
+<span>Your data is encrypted locally and compliant with HIPAA &amp; GDPR standards.</span>
+</p>
+</div>
+</div>
+<!-- Trust Assurance Pill Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-start space-x-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0 shadow-sm text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md font-semibold text-on-surface">Private Baseline Profiling</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-relaxed">
+          Biometric calibrations run directly on your chip. We never sell your biological telemetry.
+        </p>
+</div>
+</div>
+</div>
+<!-- Section 1: Demographics & Physical Baseline Form -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">monitor_weight</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Physical Baseline</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant">Clinical Standard</span>
+</div>
+<!-- Biological Sex Selection -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-secondary font-medium">Biological Sex (for metabolic rate modeling)</label>
+<div class="grid grid-cols-3 gap-2" id="sexSelector">
+<button class="sex-pill py-2.5 px-3 rounded-full font-label-md text-label-md text-center transition-all bg-primary text-on-primary font-medium" data-value="female" type="button">
+          Female
+        </button>
+<button class="sex-pill py-2.5 px-3 rounded-full font-label-md text-label-md text-center transition-all bg-surface-container text-on-surface-variant font-medium" data-value="male" type="button">
+          Male
+        </button>
+<button class="sex-pill py-2.5 px-3 rounded-full font-label-md text-label-md text-center transition-all bg-surface-container text-on-surface-variant font-medium" data-value="intersex" type="button">
+          Other
+        </button>
+</div>
+</div>
+<!-- Age & Height Grid -->
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Age -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-secondary font-medium" for="ageInput">Age</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low rounded-lg px-3.5 pr-11 text-on-surface font-headline-sm focus:outline-none focus:bg-surface-container-lowest" id="ageInput" max="110" min="16" type="number" value="32"/>
+<span class="absolute right-3 font-label-sm text-label-sm text-secondary pointer-events-none">yrs</span>
+</div>
+</div>
+<!-- Height with Unit Toggle -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-secondary font-medium" for="heightInput">Height</label>
+<div class="flex items-center space-x-1 text-label-sm">
+<button class="unit-toggle font-medium text-primary" id="heightUnitCm" type="button">cm</button>
+<span class="text-outline-variant">•</span>
+<button class="unit-toggle text-secondary" id="heightUnitFt" type="button">ft</button>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low rounded-lg px-3.5 pr-11 text-on-surface font-headline-sm focus:outline-none focus:bg-surface-container-lowest" id="heightInput" type="number" value="174"/>
+<span class="absolute right-3 font-label-sm text-label-sm text-secondary pointer-events-none" id="heightUnitBadge">cm</span>
+</div>
+</div>
+</div>
+<!-- Weight & Instant Dynamic BMI Calculation -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-secondary font-medium" for="weightInput">Current Weight</label>
+<div class="flex items-center space-x-1 text-label-sm">
+<button class="unit-toggle font-medium text-primary" id="weightUnitKg" type="button">kg</button>
+<span class="text-outline-variant">•</span>
+<button class="unit-toggle text-secondary" id="weightUnitLbs" type="button">lbs</button>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-12 bg-surface-container-low rounded-lg px-3.5 pr-11 text-on-surface font-headline-sm focus:outline-none focus:bg-surface-container-lowest" id="weightInput" step="0.5" type="number" value="68.0"/>
+<span class="absolute right-3 font-label-sm text-label-sm text-secondary pointer-events-none" id="weightUnitBadge">kg</span>
+</div>
+<!-- Realtime Biometric Feedback Chip -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low transition-colors duration-200" id="bmiResultBox">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary text-lg" id="bmiIcon">ecg_heart</span>
+<div class="flex items-baseline space-x-1">
+<span class="font-label-sm text-label-sm text-secondary">Est. BMI:</span>
+<span class="font-metric-md text-metric-md text-on-surface font-bold" id="bmiValue">22.5</span>
+</div>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-label-sm font-semibold tracking-wide flex items-center space-x-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+<span id="bmiCategoryLabel">Healthy range</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Health Focus & Clinical Conditions Multi-Select -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="space-y-1">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">vital_signs</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Health Focus &amp; Markers</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select all areas you want your daily care intelligence to prioritize:</p>
+</div>
+<!-- Focus Tag Matrix -->
+<div class="flex flex-wrap gap-2" id="healthPillsContainer">
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-primary text-on-primary shadow-sm" data-selected="true" type="button">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Better Sleep</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-primary text-on-primary shadow-sm" data-selected="true" type="button">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Cardio Fitness</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-surface-container text-on-surface-variant" data-selected="false" type="button">
+<span class="material-symbols-outlined text-base text-secondary">add</span>
+<span>Hypertension</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-surface-container text-on-surface-variant" data-selected="false" type="button">
+<span class="material-symbols-outlined text-base text-secondary">add</span>
+<span>Pre-diabetes</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-primary text-on-primary shadow-sm" data-selected="true" type="button">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Stress Reduction</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-surface-container text-on-surface-variant" data-selected="false" type="button">
+<span class="material-symbols-outlined text-base text-secondary">add</span>
+<span>Weight Management</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-surface-container text-on-surface-variant" data-selected="false" type="button">
+<span class="material-symbols-outlined text-base text-secondary">add</span>
+<span>Joint Mobility</span>
+</button>
+<button class="health-chip px-3.5 py-2 rounded-full font-label-md text-label-md transition-all flex items-center space-x-1.5 bg-surface-container text-on-surface-variant" data-selected="false" type="button">
+<span class="material-symbols-outlined text-base text-secondary">add</span>
+<span>Lipid Panel Care</span>
+</button>
+</div>
+</section>
+<!-- Section 3: Connected Wearables & Continuous Telemetry -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">watch</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Wearable Telemetry</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automate resting heart rate, sleep &amp; steps</p>
+</div>
+<!-- Native Switch Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="wearableToggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container rounded-full peer peer-checked:bg-primary peer-focus:outline-none transition-colors after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-5 shadow-inner"></div>
+</label>
+</div>
+<!-- Active Sensor Stream Micro-Panel -->
+<div class="rounded-xl p-3 bg-surface-container-low space-y-3 transition-opacity duration-200" id="sensorTelemetryCard">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary"></span>
+</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Apple Health &amp; Connect Ready</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">Read-Only</span>
+</div>
+<!-- Permission Data Types Grid -->
+<div class="grid grid-cols-3 gap-2">
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="material-symbols-outlined text-primary text-lg">favorite</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface mt-1">Heart Rate</span>
+<span class="font-body-sm text-body-sm text-secondary">Real-time</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="material-symbols-outlined text-primary text-lg">bedtime</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface mt-1">Sleep Stages</span>
+<span class="font-body-sm text-body-sm text-secondary">Deep/REM</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-center">
+<span class="material-symbols-outlined text-primary text-lg">directions_run</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface mt-1">Activity</span>
+<span class="font-body-sm text-body-sm text-secondary">Cadence</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Clinical Security & Privacy Architecture -->
+<div class="bg-surface-container-low rounded-xl p-space-md space-y-3">
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-xl">enhanced_encryption</span>
+<h3 class="font-label-md text-label-md font-semibold">PulseHealth Vault Architecture</h3>
+</div>
+<div class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-base text-tertiary shrink-0 mt-0.5">check_circle</span>
+<span><strong>HIPAA &amp; GDPR Compliant:</strong> Hardware-level AES-256 local encrypted sandbox.</span>
+</div>
+<div class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-base text-tertiary shrink-0 mt-0.5">check_circle</span>
+<span><strong>Zero-Selling Pledge:</strong> Your biometrics will never be shared with insurers or brokers.</span>
+</div>
+<div class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-base text-tertiary shrink-0 mt-0.5">check_circle</span>
+<span><strong>Biometric Protection:</strong> Requires FaceID / Fingerprint authorization before every export.</span>
+</div>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="pt-2 flex flex-col space-y-3">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold tracking-wide flex items-center justify-center space-x-2 shadow-md transition-all active:scale-[0.99]" type="button">
+<span>Continue to Habits Setup</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<button class="w-full py-2.5 text-center font-label-md text-label-md text-secondary hover:text-on-surface transition-colors" type="button">
+      I will complete this later
+    </button>
+</div>
+</div>
+<script>
+  (function initOnboardingInteraction() {
+    // Dynamic BMI Calculator
+    const heightInput = document.getElementById('heightInput');
+    const weightInput = document.getElementById('weightInput');
+    const bmiValue = document.getElementById('bmiValue');
+    const bmiCategoryLabel = document.getElementById('bmiCategoryLabel');
+    const heightUnitCm = document.getElementById('heightUnitCm');
+    const heightUnitFt = document.getElementById('heightUnitFt');
+    const heightBadge = document.getElementById('heightUnitBadge');
+    const weightUnitKg = document.getElementById('weightUnitKg');
+    const weightUnitLbs = document.getElementById('weightUnitLbs');
+    const weightBadge = document.getElementById('weightUnitBadge');
+    
+    let isMetricHeight = true;
+    let isMetricWeight = true;
+
+    function recalculateBMI() {
+      let h = parseFloat(heightInput.value) || 0;
+      let w = parseFloat(weightInput.value) || 0;
+
+      let hMeters = isMetricHeight ? (h / 100) : (h * 0.3048);
+      let wKg = isMetricWeight ? w : (w * 0.453592);
+
+      if (hMeters > 0.5 && wKg > 20) {
+        let bmi = (wKg / (hMeters * hMeters)).toFixed(1);
+        bmiValue.textContent = bmi;
+
+        if (bmi < 18.5) {
+          bmiCategoryLabel.textContent = 'Underweight range';
+        } else if (bmi <= 24.9) {
+          bmiCategoryLabel.textContent = 'Healthy weight';
+        } else if (bmi <= 29.9) {
+          bmiCategoryLabel.textContent = 'Overweight range';
+        } else {
+          bmiCategoryLabel.textContent = 'Clinical review';
+        }
+      }
+    }
+
+    if (heightInput && weightInput) {
+      heightInput.addEventListener('input', recalculateBMI);
+      weightInput.addEventListener('input', recalculateBMI);
+    }
+
+    // Height unit toggle
+    if (heightUnitCm && heightUnitFt) {
+      heightUnitCm.addEventListener('click', () => {
+        if (!isMetricHeight) {
+          isMetricHeight = true;
+          heightUnitCm.classList.add('font-medium', 'text-primary');
+          heightUnitCm.classList.remove('text-secondary');
+          heightUnitFt.classList.remove('font-medium', 'text-primary');
+          heightUnitFt.classList.add('text-secondary');
+          heightBadge.textContent = 'cm';
+          heightInput.value = Math.round((parseFloat(heightInput.value) || 5.7) * 30.48);
+          recalculateBMI();
+        }
+      });
+      heightUnitFt.addEventListener('click', () => {
+        if (isMetricHeight) {
+          isMetricHeight = false;
+          heightUnitFt.classList.add('font-medium', 'text-primary');
+          heightUnitFt.classList.remove('text-secondary');
+          heightUnitCm.classList.remove('font-medium', 'text-primary');
+          heightUnitCm.classList.add('text-secondary');
+          heightBadge.textContent = 'ft';
+          heightInput.value = ((parseFloat(heightInput.value) || 174) / 30.48).toFixed(1);
+          recalculateBMI();
+        }
+      });
+    }
+
+    // Weight unit toggle
+    if (weightUnitKg && weightUnitLbs) {
+      weightUnitKg.addEventListener('click', () => {
+        if (!isMetricWeight) {
+          isMetricWeight = true;
+          weightUnitKg.classList.add('font-medium', 'text-primary');
+          weightUnitKg.classList.remove('text-secondary');
+          weightUnitLbs.classList.remove('font-medium', 'text-primary');
+          weightUnitLbs.classList.add('text-secondary');
+          weightBadge.textContent = 'kg';
+          weightInput.value = (Math.round(((parseFloat(weightInput.value) || 150) * 0.453592) * 2) / 2).toFixed(1);
+          recalculateBMI();
+        }
+      });
+      weightUnitLbs.addEventListener('click', () => {
+        if (isMetricWeight) {
+          isMetricWeight = false;
+          weightUnitLbs.classList.add('font-medium', 'text-primary');
+          weightUnitLbs.classList.remove('text-secondary');
+          weightUnitKg.classList.remove('font-medium', 'text-primary');
+          weightUnitKg.classList.add('text-secondary');
+          weightBadge.textContent = 'lbs';
+          weightInput.value = Math.round((parseFloat(weightInput.value) || 68) * 2.20462);
+          recalculateBMI();
+        }
+      });
+    }
+
+    // Biological sex pills selection
+    const sexPills = document.querySelectorAll('.sex-pill');
+    sexPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        sexPills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary');
+          p.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        pill.classList.add('bg-primary', 'text-on-primary');
+        pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      });
+    });
+
+    // Health focus chips multi-selection
+    const healthChips = document.querySelectorAll('.health-chip');
+    healthChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const isSelected = chip.getAttribute('data-selected') === 'true';
+        const icon = chip.querySelector('.material-symbols-outlined');
+        if (isSelected) {
+          chip.setAttribute('data-selected', 'false');
+          chip.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          chip.classList.add('bg-surface-container', 'text-on-surface-variant');
+          if (icon) {
+            icon.textContent = 'add';
+            icon.classList.add('text-secondary');
+          }
+        } else {
+          chip.setAttribute('data-selected', 'true');
+          chip.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+          chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+          if (icon) {
+            icon.textContent = 'check';
+            icon.classList.remove('text-secondary');
+          }
+        }
+      });
+    });
+
+    // Wearable toggle interaction
+    const wearableToggle = document.getElementById('wearableToggle');
+    const sensorTelemetryCard = document.getElementById('sensorTelemetryCard');
+    if (wearableToggle && sensorTelemetryCard) {
+      wearableToggle.addEventListener('change', () => {
+        if (wearableToggle.checked) {
+          sensorTelemetryCard.classList.remove('opacity-40', 'pointer-events-none');
+        } else {
+          sensorTelemetryCard.classList.add('opacity-40', 'pointer-events-none');
+        }
+      });
+    }
+  })();
+</script></main></body></html>

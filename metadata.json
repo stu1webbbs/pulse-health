@@ -1,0 +1,6 @@
+{
+  "name": "PulseHealth - Clinical Biometrics & Care Intelligence",
+  "description": "HIPAA-compliant personal health telemetry tracker, vital signs logging, continuous biometric diagnostics, smart medication adherence, and AI clinical advisor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

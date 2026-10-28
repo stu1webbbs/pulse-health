@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>PulseHealth</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-primary-container': '#f4fffc', 'on-tertiary': '#ffffff', 'surface-container-low': '#f2f4f6', 'secondary-container': '#dae2fd', 'primary': '#00685f', 'on-surface': '#191c1e', 'on-background': '#191c1e', 'inverse-primary': '#6bd8cb', 'on-secondary-fixed-variant': '#3f465c', 'on-error': '#ffffff', 'tertiary-container': '#00855b', 'surface-container': '#eceef0', 'primary-container': '#008378', 'on-tertiary-fixed-variant': '#005236', 'tertiary': '#006947', 'error-container': '#ffdad6', 'surface-container-high': '#e6e8ea', 'on-surface-variant': '#3d4947', 'surface-tint': '#006a61', 'surface-container-highest': '#e0e3e5', 'on-tertiary-fixed': '#002113', 'on-secondary': '#ffffff', 'on-primary-fixed-variant': '#005049', 'primary-fixed-dim': '#6bd8cb', 'outline-variant': '#bcc9c6', 'surface-variant': '#e0e3e5', 'surface': '#f7f9fb', 'secondary': '#565e74', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed': '#00201d', 'inverse-on-surface': '#eff1f3', 'on-primary': '#ffffff', 'on-tertiary-container': '#f5fff6', 'on-error-container': '#93000a', 'on-secondary-fixed': '#131b2e', 'primary-fixed': '#89f5e7', 'background': '#f7f9fb', 'outline': '#6d7a77', 'secondary-fixed-dim': '#bec6e0', 'error': '#ba1a1a', 'secondary-fixed': '#dae2fd', 'inverse-surface': '#2d3133', 'surface-container-lowest': '#ffffff', 'on-secondary-container': '#5c647a', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f7f9fb', 'surface-dim': '#d8dadc' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'margin': '1rem', 'gutter': '1rem', 'space-lg': '1.5rem', 'margin-desktop': '3rem', 'space-xs': '0.25rem', 'space-md': '1rem', 'margin-tablet': '2rem', 'gutter-desktop': '2rem', 'space-xl': '2.25rem', 'space-sm': '0.5rem', 'gutter-tablet': '1.5rem' }, 'fontFamily': { 'headline-lg': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'label-md': ['Inter'], 'headline-lg-mobile': ['Plus Jakarta Sans'], 'metric-xl': ['Plus Jakarta Sans'], 'label-sm': ['Inter'], 'headline-sm': ['Plus Jakarta Sans'], 'metric-md': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'body-lg': ['Inter'], 'body-sm': ['Inter'], 'body-md': ['Inter'] }, 'fontSize': { 'headline-lg': ['2rem', { lineHeight: '2.5rem', letterSpacing: '-0.015em', fontWeight: '600' }], 'display-lg-mobile': ['2.5rem', { lineHeight: '3rem', letterSpacing: '-0.02em', fontWeight: '700' }], 'label-md': ['0.875rem', { lineHeight: '1.25rem', fontWeight: '500' }], 'headline-lg-mobile': ['1.625rem', { lineHeight: '2.125rem', letterSpacing: '-0.01em', fontWeight: '600' }], 'metric-xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.03em', fontWeight: '700' }], 'label-sm': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.02em', fontWeight: '600' }], 'headline-sm': ['1.125rem', { lineHeight: '1.625rem', fontWeight: '600' }], 'metric-md': ['1.5rem', { lineHeight: '1.75rem', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-md': ['1.375rem', { lineHeight: '1.875rem', fontWeight: '600' }], 'display-lg': ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.025em', fontWeight: '700' }], 'body-lg': ['1.125rem', { lineHeight: '1.75rem', fontWeight: '400' }], 'body-sm': ['0.8125rem', { lineHeight: '1.25rem', fontWeight: '400' }], 'body-md': ['0.9375rem', { lineHeight: '1.5rem', fontWeight: '400' }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(15,23,42,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="PulseHealth Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VY7K-EajeIw1gbyKD3HnsH2MBgbPL06_SphcAHXa8ZKBMewR4RUe1kkJP3NpFIoXWgVnKTph3qrwdsffA08ilE_iPbVfnO46kwgqx4lFbVtV2kkAmK0fJmw7E25thTZyg6-WK7f7xbvubh67ogf6EhsAt6X7wRuponaJn9W2VD_7aJ8KRO-Bw7xhq2OZ6GC8Hpa2yQTyE0Wdmj_Ig6qa4d9YY2prQ02S8CXqjNnAUvF282YDQKrTkuq8pS"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate">PulseHealth</span><div class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-[10px] tracking-wide uppercase" title="HIPAA Encrypted Protocol Active"><span class="material-symbols-outlined text-[12px] leading-none text-tertiary">lock</span><span class="hidden xs:inline font-semibold">256-BIT</span></div></div><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Dashboard</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="relative flex items-center justify-center pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgJFmqoQhhbAEbv4ETS83Z8iEiz3CTVbAQpB-Cq96Nu2ctvZXCeTiXurX_R8g0_fBQon7TObuRdc9aAhu7BnewqPhqQy4GHNNFKCMclllxEHhxFinzS2xqwaScTjAkfXq6IhlaBhpEc16xd1XdW1VP2JBq4jdUpMybI0P-pOuuPZxAZZZu9xTtFuYy6KPslRGeoSObmeDZ0F24eFSzZoXdzt_w6S64h1g6_Wqg9nmjvSFMNg587Q2ylA"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl space-y-space-md">
+<!-- Greeting & Live Telemetry Sync Pill -->
+<div class="flex flex-col pt-space-xs space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary tracking-normal uppercase font-semibold">Today's Vitality</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">Good morning, Alex</h1>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed-dim opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Synced 2m ago</span>
+</div>
+</div>
+<!-- Sensor Connectivity Sub-banner -->
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">watch</span>
+<span class="font-body-sm text-body-sm">Apple Watch Ultra &amp; Health Connect Active</span>
+</div>
+</div>
+<!-- Smart Medication Banner -->
+<div class="relative overflow-hidden rounded-xl bg-secondary-container/60 shadow-sm p-space-md transition-all duration-300" id="med-reminder-card">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">prescriptions</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-secondary-fixed font-semibold truncate">Medication Due</span>
+<span class="font-label-sm text-label-sm font-semibold text-primary bg-on-primary-container px-2 py-0.5 rounded-full">in 30 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant mt-0.5 line-clamp-1">Vitamin D3 (2000 IU) &amp; Omega-3 Softgel</p>
+<div class="flex items-center gap-2 mt-3">
+<button class="h-9 px-4 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform" id="take-med-btn">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Take Dose</span>
+</button>
+<button class="h-9 px-3 rounded-full bg-surface-container-lowest/80 text-secondary font-label-md text-label-md hover:bg-surface-container transition-colors" id="dismiss-med-btn">
+            Snooze
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Core Vitals Telemetry Grid (2x2) -->
+<div class="flex flex-col space-y-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Core Biometrics</span>
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-0.5 cursor-pointer">
+        All Sensors
+        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Card 1: Heart Rate -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="w-8 h-8 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-tertiary bg-tertiary-container/15 px-2 py-0.5 rounded-full">Optimal</span>
+</div>
+<span class="font-label-md text-label-md text-secondary block">Resting Pulse</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">68</span>
+<span class="font-label-sm text-label-sm text-secondary">bpm</span>
+</div>
+</div>
+<div class="mt-2 pt-2">
+<!-- Sparkline Wave SVG -->
+<svg class="w-full h-8 overflow-visible" fill="none" viewbox="0 0 100 30">
+<defs>
+<lineargradient id="hrGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00685f" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#00685f" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 0 15 Q 12 14, 20 15 L 30 15 L 34 8 L 38 24 L 42 3 L 46 20 L 50 15 L 65 15 Q 75 16, 85 14 L 100 15" stroke="#00685f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M 0 15 Q 12 14, 20 15 L 30 15 L 34 8 L 38 24 L 42 3 L 46 20 L 50 15 L 65 15 Q 75 16, 85 14 L 100 15 L 100 30 L 0 30 Z" fill="url(#hrGrad)"></path>
+<circle cx="42" cy="3" fill="#00685f" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+</svg>
+<span class="font-label-sm text-[10px] text-secondary mt-1 block truncate">Normal Zone (60–80)</span>
+</div>
+</div>
+<!-- Card 2: Blood Pressure -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="w-8 h-8 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+<span class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-tertiary bg-tertiary-container/15 px-2 py-0.5 rounded-full">Target</span>
+</div>
+<span class="font-label-md text-label-md text-secondary block">Blood Pressure</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-md text-metric-md text-on-surface font-bold tracking-tight">118/76</span>
+<span class="font-label-sm text-label-sm text-secondary">mmHg</span>
+</div>
+</div>
+<div class="mt-2 pt-2">
+<!-- Dial Gauge Visual Track -->
+<div class="w-full bg-surface-container rounded-full h-2 relative overflow-hidden my-2">
+<div class="bg-tertiary h-full rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex items-center justify-between text-[10px] text-secondary font-label-sm">
+<span>Sys &lt;120</span>
+<span class="text-tertiary font-semibold">Stage: Optimal</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Sleep Recovery -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+</div>
+<span class="font-label-sm text-[10px] uppercase font-bold tracking-wider text-primary bg-primary-fixed/40 px-2 py-0.5 rounded-full">Score 88</span>
+</div>
+<span class="font-label-md text-label-md text-secondary block">Rest Restoration</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">8<span class="text-headline-sm font-semibold text-secondary">h</span> 12<span class="text-headline-sm font-semibold text-secondary">m</span></span>
+</div>
+</div>
+<div class="mt-2 pt-1 flex flex-col gap-1">
+<!-- Sleep Segment Bar -->
+<div class="flex h-2 w-full rounded-full overflow-hidden bg-surface-container">
+<div class="bg-primary/40" style="width: 20%;" title="Deep 20%"></div>
+<div class="bg-primary" style="width: 55%;" title="Core 55%"></div>
+<div class="bg-inverse-primary" style="width: 25%;" title="REM 25%"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-label-sm text-secondary mt-0.5">
+<span>Deep 1.8h</span>
+<span>REM 2.1h</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Hydration Tracker -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<span class="font-label-sm text-[10px] font-bold text-on-secondary-container bg-secondary-fixed px-2 py-0.5 rounded-full" id="hydration-pct">72%</span>
+</div>
+<span class="font-label-md text-label-md text-secondary block">Daily Hydration</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-md text-metric-md text-on-surface font-bold" id="hydration-current">1,800</span>
+<span class="font-label-sm text-label-sm text-secondary">/ 2.5L</span>
+</div>
+</div>
+<div class="mt-2 pt-1 flex items-center justify-between">
+<div class="relative w-7 h-7 flex items-center justify-center">
+<svg class="w-7 h-7 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" id="hydration-circle" stroke="currentColor" stroke-dasharray="72, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<button class="h-7 px-2.5 rounded-full bg-surface-container hover:bg-secondary-container text-primary font-label-sm text-[11px] font-semibold flex items-center gap-0.5 transition-all active:scale-95" id="add-water-btn">
+<span class="material-symbols-outlined text-[14px]">add</span>
+            250ml
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Rings & Daily Move Target -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">donut_large</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Activity Progress</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary bg-tertiary-container/15 px-2.5 py-0.5 rounded-full">On Track</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Concentric Rings Mini SVG -->
+<div class="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 100 100">
+<!-- Steps Outer Ring (r=40) -->
+<circle cx="50" cy="50" fill="none" r="40" stroke="#f2f4f6" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" r="40" stroke="#00685f" stroke-dasharray="251.2" stroke-dashoffset="39.6" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Active Cal Middle Ring (r=28) -->
+<circle cx="50" cy="50" fill="none" r="28" stroke="#f2f4f6" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" r="28" stroke="#008378" stroke-dasharray="175.9" stroke-dashoffset="40" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Stand Inner Ring (r=16) -->
+<circle cx="50" cy="50" fill="none" r="16" stroke="#f2f4f6" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" r="16" stroke="#4edea3" stroke-dasharray="100.5" stroke-dashoffset="16.7" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-headline-sm text-headline-sm text-primary font-bold">84%</span>
+</div>
+<!-- Activity Metrics Breakdown -->
+<div class="flex flex-col justify-center gap-2 flex-1 min-w-0">
+<!-- Steps -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Steps</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">
+            8,432 <span class="font-label-sm text-secondary font-normal">/ 10k</span>
+</div>
+</div>
+<!-- Calories -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2 h-2 rounded-full bg-primary-container flex-shrink-0"></span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Active Burn</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">
+            480 <span class="font-label-sm text-secondary font-normal">/ 600 kcal</span>
+</div>
+</div>
+<!-- Stand -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim flex-shrink-0"></span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Stand Hours</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">
+            10 <span class="font-label-sm text-secondary font-normal">/ 12 hrs</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 7-Day Trend Telemetry & Wellness Graph -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Wellness Trajectory</h2>
+<p class="font-body-sm text-body-sm text-secondary">7-day continuous bio-readings</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-tertiary text-[16px]">trending_up</span>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary">+6.4%</span>
+</div>
+</div>
+<!-- 7-Day Day Selector Bar -->
+<div class="flex items-center justify-between py-2 border-b-0">
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Mon">
+<span class="font-label-sm text-[10px] font-medium">M</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">82</span>
+</button>
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Tue">
+<span class="font-label-sm text-[10px] font-medium">T</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">84</span>
+</button>
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Wed">
+<span class="font-label-sm text-[10px] font-medium">W</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">79</span>
+</button>
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Thu">
+<span class="font-label-sm text-[10px] font-medium">T</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">88</span>
+</button>
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Fri">
+<span class="font-label-sm text-[10px] font-medium">F</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">91</span>
+</button>
+<button class="day-tab flex flex-col items-center py-1.5 px-2.5 rounded-lg text-secondary hover:bg-surface-container transition-all" data-day="Sat">
+<span class="font-label-sm text-[10px] font-medium">S</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">86</span>
+</button>
+<button class="day-tab active-day flex flex-col items-center py-1.5 px-2.5 rounded-lg bg-primary text-on-primary shadow-sm transition-all" data-day="Sun">
+<span class="font-label-sm text-[10px] font-medium text-on-primary-container">Sun</span>
+<span class="font-label-sm text-label-sm font-bold mt-0.5">94</span>
+</button>
+</div>
+<!-- Chart Visual Canvas -->
+<div class="relative w-full h-36 mt-2 pt-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 320 120">
+<defs>
+<lineargradient id="trendGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00685f" stop-opacity="0.22"></stop>
+<stop offset="100%" stop-color="#00685f" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Guide lines -->
+<line stroke="#eceef0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="320" y1="30" y2="30"></line>
+<line stroke="#eceef0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="320" y1="75" y2="75"></line>
+<!-- Smooth Wellness Area & Curve -->
+<path d="M 10 78 C 50 72, 70 82, 105 70 C 145 58, 170 42, 215 36 C 255 30, 280 20, 310 14 L 310 115 L 10 115 Z" fill="url(#trendGradient)"></path>
+<path d="M 10 78 C 50 72, 70 82, 105 70 C 145 58, 170 42, 215 36 C 255 30, 280 20, 310 14" fill="none" stroke="#00685f" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Highlighted Nodes -->
+<circle cx="10" cy="78" fill="#00685f" r="3.5" stroke="#ffffff" stroke-width="1.5"></circle>
+<circle cx="105" cy="70" fill="#00685f" r="3.5" stroke="#ffffff" stroke-width="1.5"></circle>
+<circle cx="215" cy="36" fill="#00685f" r="3.5" stroke="#ffffff" stroke-width="1.5"></circle>
+<circle cx="310" cy="14" fill="#00685f" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<div class="absolute right-0 top-0 translate-y-1 bg-surface-container-highest px-2 py-0.5 rounded-full text-[10px] font-label-sm font-bold text-on-surface">
+        Peak: 94 pts
+      </div>
+</div>
+</div>
+<!-- Reassurance / Security Telemetry Badge -->
+<div class="flex items-center justify-center gap-2 py-2 text-secondary">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">
+      End-to-End Encrypted Telemetry • HIPAA &amp; GDPR Verified
+    </span>
+</div>
+</div>
+<!-- Client-side Interactive Behaviors -->
+<script>
+  // Hydration quick increment interaction
+  const waterBtn = document.getElementById('add-water-btn');
+  const hydrationCurrentEl = document.getElementById('hydration-current');
+  const hydrationPctEl = document.getElementById('hydration-pct');
+  const hydrationCircle = document.getElementById('hydration-circle');
+
+  let currentWater = 1800;
+  const maxWater = 2500;
+
+  if (waterBtn && hydrationCurrentEl && hydrationPctEl && hydrationCircle) {
+    waterBtn.addEventListener('click', () => {
+      if (currentWater < maxWater) {
+        currentWater = Math.min(maxWater, currentWater + 250);
+        hydrationCurrentEl.textContent = currentWater.toLocaleString();
+        const pct = Math.round((currentWater / maxWater) * 100);
+        hydrationPctEl.textContent = `${pct}%`;
+        hydrationCircle.setAttribute('stroke-dasharray', `${pct}, 100`);
+
+        // Tactile micro feedback
+        waterBtn.classList.add('bg-primary', 'text-on-primary');
+        setTimeout(() => {
+          waterBtn.classList.remove('bg-primary', 'text-on-primary');
+        }, 300);
+      }
+    });
+  }
+
+  // Medication banner dismissal and confirmation
+  const dismissMedBtn = document.getElementById('dismiss-med-btn');
+  const takeMedBtn = document.getElementById('take-med-btn');
+  const medCard = document.getElementById('med-reminder-card');
+
+  if (dismissMedBtn && medCard) {
+    dismissMedBtn.addEventListener('click', () => {
+      medCard.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => medCard.style.display = 'none', 300);
+    });
+  }
+
+  if (takeMedBtn && medCard) {
+    takeMedBtn.addEventListener('click', () => {
+      takeMedBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">done_all</span><span>Logged!</span>';
+      takeMedBtn.classList.add('bg-tertiary');
+      setTimeout(() => {
+        medCard.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => medCard.style.display = 'none', 300);
+      }, 700);
+    });
+  }
+
+  // Day Selector switching
+  const dayTabs = document.querySelectorAll('.day-tab');
+  dayTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      dayTabs.forEach(t => {
+        t.classList.remove('active-day', 'bg-primary', 'text-on-primary', 'shadow-sm');
+        t.classList.add('text-secondary');
+        const firstSpan = t.querySelector('span:first-child');
+        if (firstSpan) firstSpan.classList.remove('text-on-primary-container');
+      });
+      tab.classList.add('active-day', 'bg-primary', 'text-on-primary', 'shadow-sm');
+      tab.classList.remove('text-secondary');
+      const activeSpan = tab.querySelector('span:first-child');
+      if (activeSpan) activeSpan.classList.add('text-on-primary-container');
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(15,23,42,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-space-xs max-w-md mx-auto"><a aria-current="page" class="flex-1 h-full flex flex-col items-center justify-center gap-1 transition-colors text-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">ecg_heart</span><span class="font-label-sm text-[11px] leading-tight">Dashboard</span></a><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="track-and-log" href="#"><span class="material-symbols-outlined text-[24px]">add_circle</span><span class="font-label-sm text-[11px] leading-tight">Track &amp; Log</span></a><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="ai-advisor" href="#"><span class="material-symbols-outlined text-[24px]">psychology</span><span class="font-label-sm text-[11px] leading-tight">AI Advisor</span></a><a class="flex-1 h-full flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-path="profile-and-sync" href="#"><span class="material-symbols-outlined text-[24px]">devices_wearables</span><span class="font-label-sm text-[11px] leading-tight">Profile &amp; Sync</span></a></div></nav></body></html>
