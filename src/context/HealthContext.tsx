@@ -41,6 +41,8 @@ interface HealthContextType {
   activity: ActivityState;
   sleep: SleepState;
   trajectory: DayTrajectory[];
+  selectedDayId: string;
+  setSelectedDayId: (id: string) => void;
   selectedDayShort: string;
   setSelectedDayShort: (day: string) => void;
   mealLog: MealLog;
@@ -77,6 +79,7 @@ export const HealthProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [activity, setActivity] = useState<ActivityState>(initialActivity);
   const [sleep] = useState<SleepState>(initialSleep);
   const [trajectory] = useState<DayTrajectory[]>(weeklyTrajectory);
+  const [selectedDayId, setSelectedDayId] = useState<string>('day-sun');
   const [selectedDayShort, setSelectedDayShort] = useState<string>('Sun');
   const [mealLog, setMealLog] = useState<MealLog>(initialMealLog);
   const [wearables, setWearables] = useState<WearableDevice[]>(initialWearables);
@@ -394,6 +397,8 @@ export const HealthProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         activity,
         sleep,
         trajectory,
+        selectedDayId,
+        setSelectedDayId,
         selectedDayShort,
         setSelectedDayShort,
         mealLog,

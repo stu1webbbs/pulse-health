@@ -58,13 +58,13 @@ export const initialSleep: SleepState = {
 };
 
 export const weeklyTrajectory: DayTrajectory[] = [
-  { dayShort: 'M', dayFull: 'Monday', score: 82, dateStr: 'Oct 20', restingHeartRate: 70, sleepHours: 7.5, steps: 8120 },
-  { dayShort: 'T', dayFull: 'Tuesday', score: 84, dateStr: 'Oct 21', restingHeartRate: 69, sleepHours: 7.8, steps: 9400 },
-  { dayShort: 'W', dayFull: 'Wednesday', score: 79, dateStr: 'Oct 22', restingHeartRate: 72, sleepHours: 6.9, steps: 7850 },
-  { dayShort: 'T', dayFull: 'Thursday', score: 88, dateStr: 'Oct 23', restingHeartRate: 67, sleepHours: 8.0, steps: 10250 },
-  { dayShort: 'F', dayFull: 'Friday', score: 91, dateStr: 'Oct 24', restingHeartRate: 66, sleepHours: 8.2, steps: 9800 },
-  { dayShort: 'S', dayFull: 'Saturday', score: 86, dateStr: 'Oct 25', restingHeartRate: 68, sleepHours: 8.0, steps: 8700 },
-  { dayShort: 'Sun', dayFull: 'Sunday', score: 94, label: 'Peak: 94 pts', dateStr: 'Oct 26', restingHeartRate: 64, sleepHours: 8.2, steps: 8432 },
+  { id: 'day-mon', dayShort: 'M', dayFull: 'Monday', score: 82, dateStr: 'Oct 20', restingHeartRate: 70, sleepHours: 7.5, steps: 8120 },
+  { id: 'day-tue', dayShort: 'T', dayFull: 'Tuesday', score: 84, dateStr: 'Oct 21', restingHeartRate: 69, sleepHours: 7.8, steps: 9400 },
+  { id: 'day-wed', dayShort: 'W', dayFull: 'Wednesday', score: 79, dateStr: 'Oct 22', restingHeartRate: 72, sleepHours: 6.9, steps: 7850 },
+  { id: 'day-thu', dayShort: 'T', dayFull: 'Thursday', score: 88, dateStr: 'Oct 23', restingHeartRate: 67, sleepHours: 8.0, steps: 10250 },
+  { id: 'day-fri', dayShort: 'F', dayFull: 'Friday', score: 91, dateStr: 'Oct 24', restingHeartRate: 66, sleepHours: 8.2, steps: 9800 },
+  { id: 'day-sat', dayShort: 'S', dayFull: 'Saturday', score: 86, dateStr: 'Oct 25', restingHeartRate: 68, sleepHours: 8.0, steps: 8700 },
+  { id: 'day-sun', dayShort: 'Sun', dayFull: 'Sunday', score: 94, label: 'Peak: 94 pts', dateStr: 'Oct 26', restingHeartRate: 64, sleepHours: 8.2, steps: 8432 },
 ];
 
 export const initialMealLog: MealLog = {

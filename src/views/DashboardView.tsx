@@ -13,8 +13,8 @@ export const DashboardView: React.FC = () => {
     activity,
     sleep,
     trajectory,
-    selectedDayShort,
-    setSelectedDayShort,
+    selectedDayId,
+    setSelectedDayId,
     setActiveTab,
     secondsSinceSync,
     triggerLivePulse,
@@ -31,7 +31,7 @@ export const DashboardView: React.FC = () => {
   const hydrationPct = Math.min(100, Math.round((currentWater / maxWater) * 100));
 
   // Selected trajectory item
-  const selectedDayData = trajectory.find((t) => t.dayShort === selectedDayShort) || trajectory[trajectory.length - 1];
+  const selectedDayData = trajectory.find((t) => t.id === selectedDayId) || trajectory[trajectory.length - 1];
 
   // Dynamic blood pressure status
   const sys = vitals.systolic;
@@ -484,11 +484,11 @@ export const DashboardView: React.FC = () => {
         {/* 7-Day Day Selector Bar */}
         <div className="flex items-center justify-between py-2 border-b-0">
           {trajectory.map((t) => {
-            const isSelected = t.dayShort === selectedDayShort;
+            const isSelected = t.id === selectedDayId;
             return (
               <button
-                key={t.dayShort}
-                onClick={() => setSelectedDayShort(t.dayShort)}
+                key={t.id}
+                onClick={() => setSelectedDayId(t.id)}
                 className={`flex flex-col items-center py-1.5 px-2.5 rounded-xl transition-all ${
                   isSelected
                     ? 'bg-[#00e5c9] text-[#07090c] font-bold shadow-[0_0_12px_rgba(0,229,201,0.4)]'

@@ -43,6 +43,7 @@ export interface SleepState {
 }
 
 export interface DayTrajectory {
+  id: string;
   dayShort: string;
   dayFull: string;
   score: number;
