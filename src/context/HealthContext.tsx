@@ -61,6 +61,10 @@ interface HealthContextType {
   setNotificationsOpen: (open: boolean) => void;
   notifications: Array<{ id: string; title: string; time: string; read: boolean }>;
   markNotificationsAsRead: () => void;
+  isLiveStreaming: boolean;
+  setIsLiveStreaming: (live: boolean) => void;
+  secondsSinceSync: number;
+  triggerLivePulse: () => void;
 }
 
 const HealthContext = createContext<HealthContextType | undefined>(undefined);
@@ -81,6 +85,74 @@ export const HealthProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [isAiTyping, setIsAiTyping] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [isLiveStreaming, setIsLiveStreaming] = useState<boolean>(true);
+  const [secondsSinceSync, setSecondsSinceSync] = useState<number>(2);
+
+  // Live Continuous Telemetry Simulation (dynamic changing biometric numbers)
+  React.useEffect(() => {
+    if (!isLiveStreaming) return;
+
+    // Second-by-second sync timer
+    const timerInterval = setInterval(() => {
+      setSecondsSinceSync((prev) => (prev >= 60 ? 1 : prev + 1));
+    }, 1000);
+
+    // Dynamic biometric fluctuation ticker (simulating real PPG sensor feed)
+    const telemetryInterval = setInterval(() => {
+      // 1. Subtle resting pulse variation (natural sinus rhythm: 63 - 67 bpm)
+      const hrFluctuation = Math.floor(Math.random() * 5) - 2; // -2 to +2
+      setVitals((prev) => {
+        const nextHr = Math.max(58, Math.min(84, 65 + hrFluctuation));
+        // Subtle micro-variance in arterial pressure
+        const sysVariance = Math.random() > 0.6 ? (Math.random() > 0.5 ? 1 : -1) : 0;
+        const diaVariance = Math.random() > 0.7 ? (Math.random() > 0.5 ? 1 : -1) : 0;
+        return {
+          ...prev,
+          restingHeartRate: nextHr,
+          systolic: Math.max(105, Math.min(130, 118 + sysVariance)),
+          diastolic: Math.max(68, Math.min(84, 76 + diaVariance)),
+        };
+      });
+
+      // 2. Incremental steps cadence
+      if (Math.random() > 0.3) {
+        setActivity((prev) => {
+          const addedSteps = Math.floor(Math.random() * 3) + 1; // 1-3 steps
+          const newSteps = prev.steps + addedSteps;
+          const newCals = newSteps % 18 === 0 ? prev.activeCalories + 1 : prev.activeCalories;
+          return {
+            ...prev,
+            steps: newSteps,
+            activeCalories: newCals,
+            overallPercentage: Math.min(100, Math.round((newSteps / prev.stepsGoal) * 100)),
+          };
+        });
+      }
+
+      setSecondsSinceSync(0);
+    }, 3200);
+
+    return () => {
+      clearInterval(timerInterval);
+      clearInterval(telemetryInterval);
+    };
+  }, [isLiveStreaming]);
+
+  const triggerLivePulse = () => {
+    const pulseDelta = Math.floor(Math.random() * 6) + 62;
+    setVitals((prev) => ({
+      ...prev,
+      restingHeartRate: pulseDelta,
+    }));
+    setActivity((prev) => ({
+      ...prev,
+      steps: prev.steps + 5,
+      activeCalories: prev.activeCalories + 1,
+    }));
+    setSecondsSinceSync(0);
+    showToast(`Live sensor synced: Resting Pulse calibrated to ${pulseDelta} BPM`);
+  };
+
   const [notifications, setNotifications] = useState([
     { id: '1', title: 'Medication due: Vitamin D3 & Omega-3 Softgel', time: '10m ago', read: false },
     { id: '2', title: 'Hydration goal is 72% completed for today', time: '25m ago', read: false },
@@ -342,6 +414,10 @@ export const HealthProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         setNotificationsOpen,
         notifications,
         markNotificationsAsRead,
+        isLiveStreaming,
+        setIsLiveStreaming,
+        secondsSinceSync,
+        triggerLivePulse,
       }}
     >
       {children}

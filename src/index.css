@@ -1,44 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00685f;
+  --color-primary: #00e5c9;
   --color-primary-container: #008378;
-  --color-on-primary: #ffffff;
+  --color-on-primary: #00201d;
   --color-on-primary-container: #f4fffc;
   --color-primary-fixed: #89f5e7;
-  --color-primary-fixed-dim: #6bd8cb;
-  --color-secondary: #565e74;
-  --color-secondary-container: #dae2fd;
+  --color-primary-fixed-dim: #00e5c9;
+  --color-secondary: #94a3b8;
+  --color-secondary-container: #1e293b;
   --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #5c647a;
-  --color-on-secondary-fixed: #131b2e;
-  --color-on-secondary-fixed-variant: #3f465c;
-  --color-secondary-fixed: #dae2fd;
-  --color-secondary-fixed-dim: #bec6e0;
-  --color-tertiary: #006947;
-  --color-tertiary-container: #00855b;
+  --color-on-secondary-container: #cbd5e1;
+  --color-on-secondary-fixed: #e2e8f0;
+  --color-on-secondary-fixed-variant: #94a3b8;
+  --color-secondary-fixed: #334155;
+  --color-secondary-fixed-dim: #1e293b;
+  --color-tertiary: #10b981;
+  --color-tertiary-container: #064e3b;
   --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #f5fff6;
-  --color-tertiary-fixed: #6ffbbe;
-  --color-tertiary-fixed-dim: #4edea3;
-  --color-surface: #f7f9fb;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f2f4f6;
-  --color-surface-container: #eceef0;
-  --color-surface-container-high: #e6e8ea;
-  --color-surface-container-highest: #e0e3e5;
-  --color-on-surface: #191c1e;
-  --color-on-surface-variant: #3d4947;
-  --color-outline: #6d7a77;
-  --color-outline-variant: #bcc9c6;
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
+  --color-on-tertiary-container: #d1fae5;
+  --color-tertiary-fixed: #6ee7b7;
+  --color-tertiary-fixed-dim: #34d399;
+  --color-surface: #07090c;
+  --color-surface-container-lowest: #0d1117;
+  --color-surface-container-low: #12171e;
+  --color-surface-container: #171e27;
+  --color-surface-container-high: #1d2632;
+  --color-surface-container-highest: #25313f;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #94a3b8;
+  --color-outline: #334155;
+  --color-outline-variant: #1e293b;
+  --color-error: #ff4d4f;
+  --color-error-container: #3d1214;
   --color-on-error: #ffffff;
-  --color-on-error-container: #93000a;
-  --color-inverse-primary: #6bd8cb;
+  --color-on-error-container: #fecdd3;
+  --color-inverse-primary: #00685f;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 @layer base {
@@ -47,8 +48,8 @@
     margin: 0;
     padding: 0;
     min-height: 100%;
-    background-color: #f7f9fb;
-    color: #191c1e;
+    background-color: #07090c;
+    color: #f1f5f9;
     font-family: var(--font-sans);
   }
   body {
@@ -78,6 +79,42 @@
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+
+/* PulseHeart heartbeat animation */
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.22);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.15);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartPulse 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Glow animation for live telemetry */
+@keyframes liveGlow {
+  0%, 100% {
+    opacity: 0.85;
+    box-shadow: 0 0 10px rgba(0, 229, 201, 0.25);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 18px rgba(0, 229, 201, 0.55);
+  }
+}
+
+.animate-live-glow {
+  animation: liveGlow 2.4s ease-in-out infinite;
 }
 
 /* Custom Typography helpers matching design tokens */

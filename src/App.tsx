@@ -17,7 +17,7 @@ const MainScreen: React.FC = () => {
   const { activeTab } = useHealth();
 
   return (
-    <div className="min-h-screen bg-[#f7f9fb] text-[#191c1e] flex flex-col font-['Inter']">
+    <div className="min-h-screen bg-[#07090c] text-[#f1f5f9] flex flex-col font-['Inter'] selection:bg-[#00e5c9] selection:text-black">
       <Header />
       <Toast />
       <main className="flex-1 w-full max-w-lg mx-auto pt-16 flex flex-col relative min-h-screen">
